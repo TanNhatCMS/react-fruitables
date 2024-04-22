@@ -1,3 +1,3 @@
 const IMAGES = {
-}
-export default IMAGES
+};
+export default IMAGES;
