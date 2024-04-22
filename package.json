@@ -14,27 +14,11 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
     "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
     "preinstall": "npx only-allow pnpm",
     "prepare": "husky",
     "postinstall": "husky"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "*.(js|css)": [
-      "prettier --write",
-      "git add"
-    ],
-    ".js": [
-      "pnpm run lint:fix",
-      "pnpm run lint"
-    ]
   },
   "eslintConfig": {
     "extends": [
