@@ -8,6 +8,7 @@
     "@fortawesome/react-fontawesome": "^0.2.0",
     "bootstrap": "^5.3.3",
     "node-sass": "^9.0.0",
+    "rc-lightbox": "^2.1.9",
     "react": "^18.2.0",
     "react-bootstrap": "^2.10.2",
     "react-dom": "^18.2.0",
