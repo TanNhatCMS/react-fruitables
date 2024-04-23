@@ -1,5 +1,4 @@
-@import "~@fortawesome/fontawesome-free/css/all.min.css";
-@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import url('./fonts.css');
 /*** Spinner Start ***/
 #spinner {
     opacity: 0;
@@ -119,7 +118,7 @@
 
 /*** Topbar End ***/
 
-/*** Navbar Start ***/
+/*** Navibar Start ***/
 .navbar .navbar-nav .nav-link {
     padding: 10px 15px;
     font-size: 16px;
@@ -143,6 +142,7 @@
     content: "\f107";
     font-family: "Font Awesome 5 Free";
     font-weight: 700;
+
     vertical-align: middle;
     margin-left: 8px;
 }
@@ -178,11 +178,11 @@
     background: rgba(255, 255, 255, .8);
 }
 
-/*** Navbar End ***/
+/*** Navibar End ***/
 
 /*** Hero Header ***/
 .hero-header {
-    background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url(./assets/img/hero-img.jpg);
+    background: linear-gradient(rgba(248, 223, 173, 0.1), rgba(248, 223, 173, 0.1)), url(assets/images/hero-img.jpg);
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
