@@ -6,6 +6,7 @@ Fruitables comes with a responsive and mobile-friendly design that adapts flawle
 Fruitables is built using the latest web technologies, including HTML5, CSS3, JaveScript, and Bootstrap v5 framework. This free vegetables ecommerce template ensures fast loading times and optimal performance. The clean, well-commented, and well-structured code makes customization a breeze for both beginners and experienced web developers. You can customize colors, fonts, and content to create a unique and professional online presence that will attract your customers easily.
 
 So, you don’t have to look for free website templates for fruits and vegetables anymore. Fruitables is available as a free download here. Download it for free today and start turning your fresh fruits and vegetables business into a thriving online venture.
+![vegetable-website-template.jpg](https://raw.githubusercontent.com/TanNhatCMS/react-fruitables/main/fruitables-1.0.0/vegetable-website-template.jpg)
 ## Features of this free vegetable website template
 - HTML5 and CSS3
 - Bootstrap v5 framework
