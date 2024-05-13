@@ -1,42 +1,42 @@
 import React, { useEffect } from 'react'
-import '../../../assets/lib/owlcarousel/assets/owl.carousel.css'
-import '../../../assets/lib/owlcarousel/assets/owl.theme.default.css'
-import 'react-owl-carousel'
-import $ from 'jquery'
+// import '../../../assets/lib/owlcarousel/assets/owl.carousel.css'
+// import '../../../assets/lib/owlcarousel/assets/owl.theme.default.css'
+// import 'react-owl-carousel'
+// import $ from 'jquery'
 
 const Testimonial = () => {
   useEffect(() => {
-    $('.testimonial-carousel').owlCarousel({
-      autoplay: true,
-      smartSpeed: 2000,
-      center: false,
-      dots: true,
-      loop: true,
-      margin: 25,
-      nav: true,
-      navText: [
-        '<i class="bi bi-arrow-left"></i>',
-        '<i class="bi bi-arrow-right"></i>',
-      ],
-      responsiveClass: true,
-      responsive: {
-        0: {
-          items: 1,
-        },
-        576: {
-          items: 1,
-        },
-        768: {
-          items: 1,
-        },
-        992: {
-          items: 2,
-        },
-        1200: {
-          items: 2,
-        },
-      },
-    })
+    // $('.testimonial-carousel').owlCarousel({
+    //   autoplay: true,
+    //   smartSpeed: 2000,
+    //   center: false,
+    //   dots: true,
+    //   loop: true,
+    //   margin: 25,
+    //   nav: true,
+    //   navText: [
+    //     '<i class="bi bi-arrow-left"></i>',
+    //     '<i class="bi bi-arrow-right"></i>',
+    //   ],
+    //   responsiveClass: true,
+    //   responsive: {
+    //     0: {
+    //       items: 1,
+    //     },
+    //     576: {
+    //       items: 1,
+    //     },
+    //     768: {
+    //       items: 1,
+    //     },
+    //     992: {
+    //       items: 2,
+    //     },
+    //     1200: {
+    //       items: 2,
+    //     },
+    //   },
+    // })
   }, [])
 
 
