@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
-import TopInfo from '../Header/TopInfo'
-import TopLink from '../Header/TopLink'
+import TopInfo from '../TopInfo'
+import TopLink from '../TopLink'
 
 const TopBar: React.FC = () => {
   useEffect(() => {
