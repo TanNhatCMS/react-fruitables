@@ -23,7 +23,7 @@ const AdditionalActions: React.FC<{
     </a>
     {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
     <a href="/#" className="my-auto">
-      <i className="fas faa-user fa-2x" />
+      <i className="fas fa-user fa-2x" />
     </a>
   </div>
 )
