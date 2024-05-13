@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Navbar } from 'react-bootstrap'
-import { ContextModalSearch } from '../../context/ContextModalSearch'
-import Logo from '../Logo'
-import ToggleButton from '../ToggleButton'
-import NavigationLinks from '../NavigationLinks'
-import AdditionalActions from '../AdditionalActions'
+import { ContextModalSearch } from '../context/ContextModalSearch'
+import Logo from '../Header/Logo'
+import ToggleButton from '../Header/ToggleButton'
+import NavigationLinks from '../Header/NavigationLinks'
+import AdditionalActions from '../Header/AdditionalActions'
 
 const NaviBar: React.FC = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
