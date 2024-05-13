@@ -7,7 +7,7 @@ import ToggleButton from '../ToggleButton'
 import NavigationLinks from '../NavigationLinks'
 import AdditionalActions from '../AdditionalActions'
 
-const Navibar: React.FC = () => {
+const NaviBar: React.FC = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
   const valueAdd = useMemo(
     () => ({
@@ -38,4 +38,4 @@ const Navibar: React.FC = () => {
   )
 }
 
-export default Navibar
+export default NaviBar
