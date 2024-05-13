@@ -3,7 +3,7 @@ import { Container } from 'react-bootstrap'
 import TopInfo from '../TopInfo'
 import TopLink from '../TopLink'
 
-const Topbar: React.FC = () => {
+const TopBar: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.innerWidth < 992) {
@@ -35,4 +35,4 @@ const Topbar: React.FC = () => {
   )
 }
 
-export default Topbar
+export default TopBar
