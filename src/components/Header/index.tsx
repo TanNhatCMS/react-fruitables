@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react'
 import { Container } from 'react-bootstrap'
-import TopBar from './TopBar'
+import TopBar from '../TopBar'
 import NaviBar from './NaviBar'
 import Spinner from './Spinner'
 import Search from '../Modal/Search'
