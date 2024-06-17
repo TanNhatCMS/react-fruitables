@@ -4,7 +4,7 @@ import fruiteitem4 from '../../../../assets/images/fruite-item-4.jpg'
 import fruiteitem3 from '../../../../assets/images/fruite-item-3.jpg'
 import fruiteitem2 from '../../../../assets/images/fruite-item-2.jpg'
 import fruiteitem1 from '../../../../assets/images/fruite-item-1.jpg'
-import ProductItem from './Product'
+import ProductItem from './ProductItem'
 import Pagination from './Pagination'
 
 function ProductList() {
@@ -88,14 +88,7 @@ function ProductList() {
 
         {
           ListProduct.map((item, index) => (
-            <ProductItem
-              key={index}
-              type={item.type}
-              images={item.images}
-              name={item.name}
-              describe={item.describe}
-              url={item.url}
-              price={item.price} />
+            <ProductItem key={index} item={item} />
           ))
         }
         <Pagination />
