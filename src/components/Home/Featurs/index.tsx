@@ -1,7 +1,7 @@
 import React from 'react'
-import featur1 from '../../../assets/img/featur-1.jpg'
-import featur2 from '../../../assets/img/featur-2.jpg'
-import featur3 from '../../../assets/img/featur-3.jpg'
+import featur1 from '../../../assets/images/featur-1.jpg'
+import featur2 from '../../../assets/images/featur-2.jpg'
+import featur3 from '../../../assets/images/featur-3.jpg'
 
 
 const Features: React.FC = () => {
