@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import './scss/bootstrap.scss'
+import './assets/scss/bootstrap.scss'
 import './fontawesome'
 import './App.css'
 import Home from './components/Home'
@@ -14,7 +14,7 @@ import Checkout from './components/Page/Checkout'
 import Testimonial from './components/Page/Testimonial'
 
 
-const App: React.FC = () => (
+  const App: React.FC = () => (
   <BrowserRouter>
     <Routes>
       <Route
@@ -88,6 +88,24 @@ const App: React.FC = () => (
             <NoPage />
           </>
 )}
+      />
+      <Route
+        path="/:title-:id.html"
+        element={(
+          <>
+            <Head title="Shop Detail| Fruitables - Vegetable Website Template" />
+            <ShopDetail />
+          </>
+        )}
+      />
+      <Route
+        path=":id"
+        element={(
+          <>
+            <Head title="Shop | Fruitables - Vegetable Website Template" />
+            <Shop />
+          </>
+        )}
       />
       <Route path="/" element={<Navigate to="/index.html" />} />
       <Route path="*" element={<Navigate to="/404.html" />} />
