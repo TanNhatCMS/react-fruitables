@@ -5,6 +5,7 @@ import fruiteitem3 from '../../../../assets/images/fruite-item-3.jpg'
 import fruiteitem2 from '../../../../assets/images/fruite-item-2.jpg'
 import fruiteitem1 from '../../../../assets/images/fruite-item-1.jpg'
 import ProductItem from './Product'
+import Pagination from './Pagination'
 
 function ProductList() {
   const ListProduct = [
@@ -97,34 +98,7 @@ function ProductList() {
               price={item.price} />
           ))
         }
-        <div className="col-12">
-          <div className="pagination d-flex justify-content-center mt-5">
-            <a href="/#" className="rounded">
-              «
-            </a>
-            <a href="/#" className="active rounded">
-              1
-            </a>
-            <a href="/#" className="rounded">
-              2
-            </a>
-            <a href="/#" className="rounded">
-              3
-            </a>
-            <a href="/#" className="rounded">
-              4
-            </a>
-            <a href="/#" className="rounded">
-              5
-            </a>
-            <a href="/#" className="rounded">
-              6
-            </a>
-            <a href="/#" className="rounded">
-              »
-            </a>
-          </div>
-        </div>
+        <Pagination />
       </div>
     </div>
   )
