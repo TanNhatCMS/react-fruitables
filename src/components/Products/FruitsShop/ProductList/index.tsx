@@ -1,96 +1,32 @@
-import React from 'react'
-import fruiteitem5 from '../../../../assets/images/fruite-item-5.jpg'
-import fruiteitem4 from '../../../../assets/images/fruite-item-4.jpg'
-import fruiteitem3 from '../../../../assets/images/fruite-item-3.jpg'
-import fruiteitem2 from '../../../../assets/images/fruite-item-2.jpg'
-import fruiteitem1 from '../../../../assets/images/fruite-item-1.jpg'
+import React, { useState, useEffect } from 'react'
+
 import ProductItem from './ProductItem'
 import Pagination from './Pagination'
 
 function ProductList() {
-  const ListProduct = [
-    {
-      name: 'Grapes',
-      type: 'Fruits',
-      images: fruiteitem5,
-      describe: 'Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt',
-      url: '',
-      price: 4.99,
-    },
-    {
-      name: 'Grapes',
-      type: 'Fruits',
-      images: fruiteitem5,
-      describe: 'Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt',
-      url: '',
-      price: 4.99,
-    },
-    {
-      name: 'Raspberries',
-      type: 'Fruits',
-      images: fruiteitem2,
-      describe: 'Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt',
-      url: '',
-      price: 4.99,
-    },
-    {
-      name: 'Apricots',
-      type: 'Fruits',
-      images: fruiteitem4,
-      describe: 'Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt',
-      url: '',
-      price: 4.99,
-    },
-    {
-      name: 'Banana',
-      type: 'Fruits',
-      images: fruiteitem3,
-      describe: 'Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt',
-      url: '',
-      price: 4.99,
-    },
-    {
-      name: 'Oranges',
-      type: 'Fruits',
-      images: fruiteitem1,
-      describe: 'Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt',
-      url: '',
-      price: 4.99,
-    },
-    {
-      name: 'Raspberries',
-      type: 'Fruits',
-      images: fruiteitem2,
-      describe: 'Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt',
-      url: '',
-      price: 4.99,
-    },
-    {
-      name: 'Grapes',
-      type: 'Fruits',
-      images: fruiteitem5,
-      describe: 'Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt',
-      url: '',
-      price: 4.99,
-    },
-    {
-      name: 'Oranges',
-      type: 'Fruits',
-      images: fruiteitem1,
-      describe: 'Lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod te incididunt',
-      url: '',
-      price: 4.99,
-    },
-  ]
+  const [products, setProducts] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    fetch('https://dummyjson.com/products')
+      .then(res => res.json())
+      .then(data => {
+        setProducts(data.products)
+        setIsLoading(false)
+      })
+      .catch(error => console.error(error))
+  }, [])
   return (
     <div className="col-lg-9">
       <div className="row g-4 justify-content-center">
 
-        {
-          ListProduct.map((item, index) => (
-            <ProductItem key={index} item={item} />
+        {isLoading ? (
+          <p>Loading products...</p>
+        ) : (
+          products.map((product, index) => (
+            <ProductItem key={index} item={product} />
           ))
-        }
+        )}
         <Pagination />
       </div>
     </div>
