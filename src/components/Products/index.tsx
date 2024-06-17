@@ -5,7 +5,7 @@ import FruitsShop from './FruitsShop'
 import SinglePageHeader from './SinglePageHeader'
 
 
-const Shop: React.FC = () => (
+const Products: React.FC = () => (
   <>
     <Header />
     <SinglePageHeader />
@@ -15,4 +15,4 @@ const Shop: React.FC = () => (
 )
 
 
-export default Shop
+export default Products
