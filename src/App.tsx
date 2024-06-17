@@ -12,6 +12,8 @@ import ShopDetail from './components/ShopDetail'
 import Cart from './components/Page/Cart'
 import Checkout from './components/Page/Checkout'
 import Testimonial from './components/Page/Testimonial'
+import Products from './components/Products'
+import ProductDetail from './components/ProductDetail'
 
 
   const App: React.FC = () => (
@@ -25,6 +27,24 @@ import Testimonial from './components/Page/Testimonial'
             <Home />
           </>
       )}
+      />
+      <Route
+        path="/products"
+        element={(
+          <>
+            <Head title="Products | Fruitables - Vegetable Website Template" />
+            <Products />
+          </>
+        )}
+      />
+      <Route
+        path="/product/:id"
+        element={(
+          <>
+            <Head title="Product Detail| Fruitables - Vegetable Website Template" />
+            <ProductDetail />
+          </>
+        )}
       />
       <Route
         path="/shop.html"
