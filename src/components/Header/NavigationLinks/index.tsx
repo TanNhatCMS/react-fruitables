@@ -5,6 +5,8 @@ import { Nav, NavDropdown } from 'react-bootstrap'
 const NavigationLinks: React.FC<{ activeLink: string }> = ({ activeLink }) => (
   <Nav className="mx-auto">
     <Nav.Link href="/index.html" active={activeLink === 'index.html'}>Home</Nav.Link>
+    <Nav.Link href="/products" active={activeLink === 'products'}>Products</Nav.Link>
+    <Nav.Link href="/product" active={activeLink === 'product'}>Product Detail</Nav.Link>
     <Nav.Link href="/shop.html" active={activeLink === 'shop.html'}>Shop</Nav.Link>
     <Nav.Link href="/shop-detail.html" active={activeLink === 'shop-detail.html'}>Shop Detail</Nav.Link>
     <NavDropdown title="Pages" id="basic-nav-dropdown">
