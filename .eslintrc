@@ -29,6 +29,7 @@
         "no-unexpected-multiline": "error",
         "react/react-in-jsx-scope": "off",
         "react/jsx-sort-props": "off",
+        "eslint-disable-next-line": "off",
         "react/function-component-definition": "off",
         "no-shadow": "off"
       }
