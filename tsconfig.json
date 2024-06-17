@@ -32,6 +32,8 @@
     "**/*.d.ts",
     "**/*.js",
     "**/*.jsx",
+    "src",
+    "src/types"
   ],
   "exclude": ["node_modules"]
 }
