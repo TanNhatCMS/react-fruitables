@@ -1,7 +1,7 @@
-import React from 'react'
+import type React from "react"
 
-function ProductItem({ item }) {
-  const defaultImage = 'https://via.placeholder.com/150'
+const ProductItem: React.FC<{ item: any }> = ({ item }) => {
+  const defaultImage = "https://via.placeholder.com/150"
 
   return (
     <div className="col-md-6 col-lg-6 col-xl-4">
@@ -10,7 +10,7 @@ function ProductItem({ item }) {
           <img
             src={item.thumbnail || defaultImage} // Use default image if no image provided
             className="img-fluid w-100 rounded-top"
-            alt={item.name || 'Product image'} // Set alt text based on name
+            alt={item.name || "Product image"} // Set alt text based on name
           />
         </div>
         <div
