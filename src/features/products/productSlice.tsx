@@ -59,7 +59,7 @@ const initialState: ProductState = {
   status: "idle",
   total: 0,
   page: 1,
-  limit: 9,
+  limit: 6,
   skip: 0,
   error: null
 }
