@@ -1,7 +1,7 @@
-import React from 'react'
+import type React from 'react'
 import { Container, Row, Col, Nav } from 'react-bootstrap'
 
-function ProductList() {
+const ProductList: React.FC = () => {
   return (
     <Container>
       <Row>

@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 import bestProduct1 from '../../assets/images/best-product-1.jpg'
 import bestProduct2 from '../../assets/images/best-product-2.jpg'
 import bestProduct3 from '../../assets/images/best-product-3.jpg'

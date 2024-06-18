@@ -1,29 +1,30 @@
-import React, { useCallback, useContext, useEffect } from 'react'
+import type React from 'react'
+import { useCallback, useContext, useEffect } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import { ContextModalSearch } from '../../context/ContextModalSearch'
 
-const Search = (props) => {
+const Search: React.FC = (props) => {
   const modalContext = useContext(ContextModalSearch)
-  const { setIsOpenModal } = modalContext
-
+  const { isOpenModal, setIsOpenModal } = modalContext
 
   const handleCloseEsc = useCallback(
     (ev: KeyboardEvent) => {
-      ev.stopPropagation()
       if (ev.key === 'Escape') {
         setIsOpenModal(false)
       }
     },
     [setIsOpenModal],
   )
+
   useEffect(() => {
     document.addEventListener('keydown', handleCloseEsc)
     return () => document.removeEventListener('keydown', handleCloseEsc)
   }, [handleCloseEsc])
-  const handleClose = (ev: React.MouseEvent<HTMLElement>) => {
-    ev.stopPropagation()
-    if (ev.currentTarget === ev.target) setIsOpenModal(false)
+
+  const handleClose = () => {
+    setIsOpenModal(false)
   }
+
   return (
     <>
       {/* Modal Search Start */}
@@ -36,7 +37,7 @@ const Search = (props) => {
         aria-hidden="true"
         className="modal-content rounded-0"
         fullscreen
-        show={setIsOpenModal}
+        show={isOpenModal}
         onHide={handleClose}
       >
         <Modal.Header closeButton>
@@ -62,7 +63,6 @@ const Search = (props) => {
       </Modal>
       {/* Modal Search End */}
     </>
-
   )
 }
 

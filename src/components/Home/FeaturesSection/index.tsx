@@ -1,9 +1,10 @@
-import React from 'react'
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import type React from 'react'
 import { Container, Row, Col } from 'react-bootstrap'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCarSide, faUserShield, faExchangeAlt, faPhoneAlt } from '@fortawesome/free-solid-svg-icons'
 
-const FeaturesSection = () => {
+const FeaturesSection: React.FC = () => {
   const features = [
     { icon: faCarSide, title: 'Free Shipping', description: 'Free on order over $300' },
     { icon: faUserShield, title: 'Security Payment', description: '100% security payment' },

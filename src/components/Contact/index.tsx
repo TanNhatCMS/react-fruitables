@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 import Header from '../Header'
 import Footer from '../Footer'
 
@@ -21,7 +21,7 @@ const Shop: React.FC = () => (
         </ol>
       </div>
       {/* Single Page Header End */}
- 
+
       {/* Contact Start */}
       <div className="container-fluid contact py-5">
         <div className="container py-5">

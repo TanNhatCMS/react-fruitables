@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 
 const SinglePageHeader: React.FC = () => (
   <div className="container-fluid page-header py-5">

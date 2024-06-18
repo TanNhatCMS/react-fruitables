@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 import featur1 from '../../../assets/images/featur-1.jpg'
 import featur2 from '../../../assets/images/featur-2.jpg'
 import featur3 from '../../../assets/images/featur-3.jpg'

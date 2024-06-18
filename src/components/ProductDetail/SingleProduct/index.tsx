@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 import Right from './Right'
 import Left from './Left'
 

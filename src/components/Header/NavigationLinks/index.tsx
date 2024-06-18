@@ -1,5 +1,5 @@
 
-import React from 'react'
+import type React from 'react'
 import { Nav, NavDropdown } from 'react-bootstrap'
 
 const NavigationLinks: React.FC<{ activeLink: string }> = ({ activeLink }) => (

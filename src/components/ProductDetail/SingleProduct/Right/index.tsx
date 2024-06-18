@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 import featur1 from '../../../../assets/images/featur-1.jpg'
 import featur2 from '../../../../assets/images/featur-2.jpg'
 import featur3 from '../../../../assets/images/featur-3.jpg'
@@ -7,7 +7,7 @@ import vegetableitem5 from '../../../../assets/images/vegetable-item-5.jpg'
 import vegetableitem6 from '../../../../assets/images/vegetable-item-6.jpg'
 import bannerfruits from '../../../../assets/images/banner-fruits.jpg'
 
-const Right = () => {
+const Right: React.FC = () => {
   return (
     <div className="col-lg-4 col-xl-3">
       <div className="row g-4 fruite">
@@ -244,7 +244,7 @@ const Right = () => {
             />
             <div
               className="position-absolute"
-              style={{ top: "50%", right: 10, transform: "translateY(-50%)" }}
+              style={{ top: '50%', right: 10, transform: 'translateY(-50%)' }}
             >
               <h3 className="text-secondary fw-bold">
                 Fresh <br /> Fruits <br /> Banner

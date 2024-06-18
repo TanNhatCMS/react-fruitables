@@ -1,4 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react'
+import type React from 'react';
+import { useState, useEffect, useMemo } from 'react'
 import { useLocation } from 'react-router-dom'
 import { Navbar } from 'react-bootstrap'
 import { ContextModalSearch } from '../../context/ContextModalSearch'

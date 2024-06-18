@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import type React from 'react';
+import { useEffect } from 'react'
 import { Container } from 'react-bootstrap'
 import TopInfo from '../TopInfo'
 import TopLink from '../TopLink'

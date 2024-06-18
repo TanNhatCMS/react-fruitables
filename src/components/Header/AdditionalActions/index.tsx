@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 
 const AdditionalActions: React.FC<{
   setIsOpenModal: React.Dispatch<React.SetStateAction<boolean>>

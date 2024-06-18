@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import type React from 'react'
+import { useEffect } from 'react'
 // import '../../../assets/lib/owlcarousel/assets/owl.carousel.css'
 // import '../../../assets/lib/owlcarousel/assets/owl.theme.default.css'
 // import 'react-owl-carousel'
 // import $ from 'jquery'
 
-const Testimonial = () => {
+const Testimonial: React.FC = () => {
   useEffect(() => {
     // $('.testimonial-carousel').owlCarousel({
     //   autoplay: true,

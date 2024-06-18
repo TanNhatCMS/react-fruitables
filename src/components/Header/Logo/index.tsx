@@ -1,4 +1,4 @@
-import React from 'react'
+import type React from 'react'
 import { Navbar } from 'react-bootstrap'
 
 const Logo: React.FC = () => (

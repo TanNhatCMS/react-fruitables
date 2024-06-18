@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react'
+import type React from 'react';
+import { useEffect } from 'react'
 import Copyright from './Copyright'
 import payment from '../../assets/images/payment.png'
 
@@ -33,7 +34,7 @@ const Footer: React.FC = () => {
 
     const easeInOutExpo = (t: number): number => {
       // eslint-disable-next-line no-nested-ternary
-      return t === 0 ? 0 : t === 1 ? 1 : t < 0.5 ? 2**(20 * t - 10) / 2 : (2 - 2**(-20 * t + 10)) / 2
+      return t === 0 ? 0 : t === 1 ? 1 : t < 0.5 ? 2 ** (20 * t - 10) / 2 : (2 - 2 ** (-20 * t + 10)) / 2
     }
     const scroll = () => {
       const currentTime = 'now' in window.performance ? performance.now() : new Date().getTime()

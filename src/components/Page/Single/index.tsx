@@ -1,7 +1,6 @@
-import React from 'react'
+import type React from 'react'
 
-
-const Single = ({ title, name }) => (
+const Single: React.FC<{ title: any, name: any }> = ({ title, name }) => (
   <>
     {/* Single Page Header start */}
     <div className="container-fluid page-header py-5">
