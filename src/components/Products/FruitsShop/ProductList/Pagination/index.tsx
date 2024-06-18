@@ -1,33 +1,112 @@
-import React from 'react'
+import React from "react"
 
-function Pagination() {
+interface PaginationProps {
+  total: number;
+  page: number;
+  limit: number;
+  onPageChange: (newPage: number) => void;
+}
+
+const Pagination: React.FC<PaginationProps> = ({ total, page, limit, onPageChange }) => {
+  const totalPages = Math.max(1, Math.ceil(total / (limit || 1)))
+
+  const handlePrevPage = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault()
+    if (page > 1) onPageChange(page - 1)
+  }
+
+  const handleNextPage = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault()
+    if (page < totalPages) onPageChange(page + 1)
+  }
+
+  const handleFirstPage = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault()
+    onPageChange(1)
+  }
+
+  const handleLastPage = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault()
+    onPageChange(totalPages)
+  }
+
+  const handlePageClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, newPage: number) => {
+    e.preventDefault()
+    if (newPage !== page) onPageChange(newPage)
+  }
+
+  const renderPageNumbers = () => {
+    const pages = []
+    const maxPagesToShow = 2 // Number of pages to show on either side of the current page
+
+    const createPageElement = (pageNumber: number) => (
+      <a
+        key={pageNumber}
+        href="/#"
+        className={`rounded ${page === pageNumber ? "active" : ""}`}
+        onClick={(e) => handlePageClick(e, pageNumber)}
+      >
+        {pageNumber}
+      </a>
+    )
+
+    if (page > 1) {
+      pages.push(
+        <a key="first" href="/#" className="rounded" onClick={handleFirstPage}>
+          « First
+        </a>
+      )
+    }
+
+    if (page > 1) {
+      pages.push(
+        <a key="prev" href="/#" className="rounded" onClick={handlePrevPage}>
+          « Prev
+        </a>
+      )
+    }
+
+    pages.push(createPageElement(1))
+
+    if (page > maxPagesToShow + 2) {
+      pages.push(<span key="start-ellipsis">...</span>)
+    }
+
+    for (let i = Math.max(2, page - maxPagesToShow); i <= Math.min(totalPages - 1, page + maxPagesToShow); i++) {
+      pages.push(createPageElement(i))
+    }
+
+    if (page < totalPages - maxPagesToShow - 1) {
+      pages.push(<span key="end-ellipsis">...</span>)
+    }
+
+    if (totalPages > 1) {
+      pages.push(createPageElement(totalPages))
+    }
+
+    if (page < totalPages) {
+      pages.push(
+        <a key="next" href="/#" className="rounded" onClick={handleNextPage}>
+          Next »
+        </a>
+      )
+    }
+
+    if (page < totalPages) {
+      pages.push(
+        <a key="last" href="/#" className="rounded" onClick={handleLastPage}>
+          Last »
+        </a>
+      )
+    }
+
+    return pages
+  }
+
   return (
     <div className="col-12">
       <div className="pagination d-flex justify-content-center mt-5">
-        <a href="/#" className="rounded">
-          «
-        </a>
-        <a href="/#" className="active rounded">
-          1
-        </a>
-        <a href="/#" className="rounded">
-          2
-        </a>
-        <a href="/#" className="rounded">
-          3
-        </a>
-        <a href="/#" className="rounded">
-          4
-        </a>
-        <a href="/#" className="rounded">
-          5
-        </a>
-        <a href="/#" className="rounded">
-          6
-        </a>
-        <a href="/#" className="rounded">
-          »
-        </a>
+        {renderPageNumbers()}
       </div>
     </div>
   )
