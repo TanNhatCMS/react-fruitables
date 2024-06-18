@@ -1,6 +1,6 @@
-import React from 'react'
+import type React from "react"
 
-function ProductItem({ item }) {
+const ProductItem: React.FC<{ item: any }> = ({ item }) => {
   return (
     <div className="border border-primary rounded position-relative vesitable-item">
       <div className="vesitable-img">
