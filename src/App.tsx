@@ -136,4 +136,5 @@ const App = () => (
   </Provider>
 )
 
-export default App
+// @ts-ignore
+export default App;
