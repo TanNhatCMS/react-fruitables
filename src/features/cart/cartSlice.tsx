@@ -15,15 +15,17 @@ interface CartItem {
 interface CartState {
   items: CartItem[];
   shipping: number;
+  totalQuantity: number;
 }
 
 const initialState: CartState = {
   items: [
-    { id: 1, name: "Big Banana", price: 2.99, quantity: 1, img: vegetableitem3 },
-    { id: 2, name: "Potatoes", price: 2.99, quantity: 1, img: vegetableitem5 },
-    { id: 3, name: "Awesome Broccoli", price: 2.99, quantity: 1, img: vegetableitem2 }
+    { id: 1000, name: "Big Banana", price: 2.99, quantity: 1, img: vegetableitem3 },
+    { id: 2000, name: "Potatoes", price: 2.99, quantity: 1, img: vegetableitem5 },
+    { id: 3000, name: "Awesome Broccoli", price: 2.99, quantity: 1, img: vegetableitem2 }
   ],
-  shipping: 3.00
+  shipping: 3.00,
+  totalQuantity: 3
 }
 
 export const fetchProductAndAdd = createAsyncThunk(
@@ -46,6 +48,18 @@ export const fetchProductAndAdd = createAsyncThunk(
   }
 )
 
+export const addProductById = createAsyncThunk(
+  "cart/addProductById",
+  async (id: number, { dispatch }) => {
+    try {
+      await dispatch(fetchProductAndAdd(id))
+    } catch (error) {
+      console.error("Error adding product:", error)
+      throw error
+    }
+  }
+)
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -54,16 +68,22 @@ export const cartSlice = createSlice({
       const item = state.items.find(item => item.id === action.payload)
       if (item) {
         item.quantity += 1
+        state.totalQuantity += 1
       }
     },
     decrementQuantity: (state, action: PayloadAction<number>) => {
       const item = state.items.find(item => item.id === action.payload)
       if (item && item.quantity > 1) {
         item.quantity -= 1
+        state.totalQuantity -= 1
       }
     },
     removeItem: (state, action: PayloadAction<number>) => {
-      state.items = state.items.filter(item => item.id !== action.payload)
+      const item = state.items.find(item => item.id === action.payload)
+      if (item) {
+        state.totalQuantity -= item.quantity
+        state.items = state.items.filter(item => item.id !== action.payload)
+      }
     }
   },
   extraReducers: (builder) => {
@@ -72,8 +92,10 @@ export const cartSlice = createSlice({
       const itemExists = state.items.find(item => item.id === id)
       if (itemExists) {
         itemExists.quantity += quantity
+        state.totalQuantity += quantity
       } else {
         state.items.push({ id, name, price, quantity, img })
+        state.totalQuantity += quantity
       }
     })
   }
