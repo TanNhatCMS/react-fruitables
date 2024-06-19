@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createSlice, PayloadAction, createAsyncThunk, unwrapResult } from "@reduxjs/toolkit"
 import { fetchProductById, Product } from "../products/productSlice"
 import vegetableitem3 from "../../assets/images/vegetable-item-3.png"
 import vegetableitem5 from "../../assets/images/vegetable-item-5.jpg"
@@ -26,6 +26,26 @@ const initialState: CartState = {
   shipping: 3.00
 }
 
+export const fetchProductAndAdd = createAsyncThunk(
+  "cart/fetchProductAndAdd",
+  async (productId: number, { dispatch }) => {
+    try {
+      const productAction = await dispatch(fetchProductById(productId.toString()))
+      const product: Product = unwrapResult(productAction)
+      return {
+        id: product.id,
+        name: product.title,
+        price: product.price,
+        img: product.thumbnail,
+        quantity: 1
+      }
+    } catch (error) {
+      console.error("Error fetching product:", error)
+      throw error
+    }
+  }
+)
+
 export const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -44,39 +64,21 @@ export const cartSlice = createSlice({
     },
     removeItem: (state, action: PayloadAction<number>) => {
       state.items = state.items.filter(item => item.id !== action.payload)
-    },
-    addItem: {
-      reducer: (state, action: PayloadAction<CartItem>) => {
-        const { id, name, price, img } = action.payload
-        const itemExists = state.items.find(item => item.id === id)
-        if (itemExists) {
-          itemExists.quantity += 1
-        } else {
-          state.items.push({ id, name, price, quantity: 1, img })
-        }
-      },
-      // Prepare to fetch product details first
-      prepare: async (productId: number, dispatch) => {
-        try {
-          const product: Product = await dispatch(fetchProductById(productId.toString()))
-          return {
-            payload: {
-              id: product.id,
-              name: product.title,
-              price: product.price,
-              img: product.thumbnail
-            }
-          }
-        } catch (error) {
-          // Handle errors if necessary
-          console.error("Error fetching product:", error)
-          throw error // Rethrow to propagate the error
-        }
-      }
     }
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchProductAndAdd.fulfilled, (state, action: PayloadAction<CartItem>) => {
+      const { id, name, price, img, quantity } = action.payload
+      const itemExists = state.items.find(item => item.id === id)
+      if (itemExists) {
+        itemExists.quantity += quantity
+      } else {
+        state.items.push({ id, name, price, quantity, img })
+      }
+    })
   }
 })
 
-export const { incrementQuantity, decrementQuantity, removeItem, addItem } = cartSlice.actions
+export const { incrementQuantity, decrementQuantity, removeItem } = cartSlice.actions
 
 export default cartSlice.reducer
