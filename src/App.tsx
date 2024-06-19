@@ -1,28 +1,28 @@
-import type React from 'react'
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import './assets/scss/bootstrap.scss'
-import './fontawesome'
-import './App.css'
-import Home from './components/Home'
-import NoPage from './components/Page/NoPage'
-import Head from './components/Head'
-import Shop from './components/Shop'
-import Contact from './components/Contact'
-import ShopDetail from './components/ShopDetail'
-import Cart from './components/Page/Cart'
-import Checkout from './components/Page/Checkout'
-import Testimonial from './components/Page/Testimonial'
-import Products from './components/Products'
-import ProductDetail from './components/ProductDetail'
-import store from './app/store'
-import { Provider } from 'react-redux'
+import type React from "react"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import "./assets/scss/bootstrap.scss"
+import "./fontawesome"
+import "./App.css"
+import Home from "./components/Home"
+import NoPage from "./components/Page/NoPage"
+import Head from "./components/Head"
+import Shop from "./components/Shop"
+import Contact from "./components/Contact"
+import ShopDetail from "./components/ShopDetail"
+import Cart from "./components/Page/Cart"
+import Checkout from "./components/Page/Checkout"
+import Testimonial from "./components/Page/Testimonial"
+import Products from "./components/Products"
+import ProductDetail from "./components/ProductDetail"
+import store from "./app/store"
+import { Provider } from "react-redux"
 
 const App = () => (
   <Provider store={store}>
     <BrowserRouter>
       <Routes>
         <Route
-          path="/index.html"
+          path="/"
           element={(
             <>
               <Head title="Home | Fruitables - Vegetable Website Template " />
@@ -49,7 +49,7 @@ const App = () => (
           )}
         />
         <Route
-          path="/shop.html"
+          path="/shop"
           element={(
             <>
               <Head title="Shop | Fruitables - Vegetable Website Template" />
@@ -58,7 +58,7 @@ const App = () => (
           )}
         />
         <Route
-          path="/shop-detail.html"
+          path="/shop-detail"
           element={(
             <>
               <Head title="Shop Detail| Fruitables - Vegetable Website Template" />
@@ -67,7 +67,7 @@ const App = () => (
           )}
         />
         <Route
-          path="/contact.html"
+          path="/contact"
           element={(
             <>
               <Head title="Contact| Fruitables - Vegetable Website Template" />
@@ -76,7 +76,7 @@ const App = () => (
           )}
         />
         <Route
-          path="/testimonial.html"
+          path="/testimonial"
           element={(
             <>
               <Head title="Testimonial | Fruitables - Vegetable Website Template" />
@@ -85,7 +85,7 @@ const App = () => (
           )}
         />
         <Route
-          path="/cart.html"
+          path="/cart"
           element={(
             <>
               <Head title="Cart| Fruitables - Vegetable Website Template" />
@@ -94,7 +94,7 @@ const App = () => (
           )}
         />
         <Route
-          path="/checkout.html"
+          path="/checkout"
           element={(
             <>
               <Head title="Checkout | Fruitables - Vegetable Website Template" />
@@ -103,7 +103,7 @@ const App = () => (
           )}
         />
         <Route
-          path="/404.html"
+          path="/404"
           element={(
             <>
               <Head title="404 | Page not found" />
@@ -129,7 +129,6 @@ const App = () => (
             </>
           )}
         />
-        <Route path="/" element={<Navigate to="/index.html" />} />
         <Route path="*" element={<Navigate to="/404.html" />} />
       </Routes>
     </BrowserRouter>
@@ -137,4 +136,4 @@ const App = () => (
 )
 
 // @ts-ignore
-export default App;
+export default App
