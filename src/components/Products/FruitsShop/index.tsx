@@ -1,8 +1,24 @@
-import type React from 'react'
-import Left from './Left'
-import ProductList from './ProductList'
+import React, { useEffect, useState } from "react"
+import Left from "./Left"
+import ProductList from "./ProductList"
+import { useAppDispatch, useAppSelector } from "../../../app/hooks"
+import { fetchProduct, setPage, setSearchQuery } from "../../../features/products/productSlice"
+import type { RootState } from "../../../app/store"
 
 const FruitsShop: React.FC = () => {
+  const dispatch = useAppDispatch()
+  const searchQuery = useAppSelector((state: RootState) => state.products.searchQuery)
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (searchQuery.trim()) {
+      dispatch(setSearchQuery(searchQuery))
+    }
+  }
+  useEffect(() => {
+    dispatch(setSearchQuery(searchQuery))
+  }, [dispatch, searchQuery])
+
   return (
     <div className="container-fluid fruite py-5">
       <div className="container py-5">
@@ -11,22 +27,25 @@ const FruitsShop: React.FC = () => {
           <div className="col-lg-12">
             <div className="row g-4">
               <div className="col-xl-3">
-                <div className="input-group w-100 mx-auto d-flex">
+                <form className="input-group w-100 mx-auto d-flex" onSubmit={handleSearch}>
                   <input
                     type="search"
                     className="form-control p-3"
                     placeholder="keywords"
                     aria-describedby="search-icon-1"
+                    value={searchQuery}
+                    onChange={(e) => {
+                      dispatch(setSearchQuery(e.target.value))
+                    }}
                   />
-                  <span id="search-icon-1" className="input-group-text p-3">
-                <i className="fa fa-search" />
-              </span>
-                </div>
+                  <button type="submit" id="search-icon-1" className="input-group-text p-3">
+                    <i className="fa fa-search" />
+                  </button>
+                </form>
               </div>
               <div className="col-6" />
               <div className="col-xl-3">
                 <div className="bg-light ps-3 py-3 rounded d-flex justify-content-between mb-4">
-                  {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                   <label htmlFor="fruits">Default Sorting:</label>
                   <select
                     id="fruits"
@@ -50,7 +69,6 @@ const FruitsShop: React.FC = () => {
         </div>
       </div>
     </div>
-
   )
 }
 

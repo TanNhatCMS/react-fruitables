@@ -1,8 +1,8 @@
-import React from 'react'
-import featur1 from '../../../../assets/images/featur-1.jpg'
-import featur2 from '../../../../assets/images/featur-2.jpg'
-import featur3 from '../../../../assets/images/featur-3.jpg'
-import bannerfruits from '../../../../assets/images/banner-fruits.jpg'
+import React from "react"
+import featur1 from "../../../../assets/images/featur-1.jpg"
+import featur2 from "../../../../assets/images/featur-2.jpg"
+import featur3 from "../../../../assets/images/featur-3.jpg"
+import bannerfruits from "../../../../assets/images/banner-fruits.jpg"
 
 function Left() {
   return (
@@ -72,7 +72,7 @@ function Left() {
               max={500}
               defaultValue={0}
               onInput={(e) => {
-                const amountElement = document.getElementById('amount') as HTMLInputElement
+                const amountElement = document.getElementById("amount") as HTMLInputElement
                 const targetElement = e.target as HTMLInputElement
                 amountElement.value = targetElement.value
               }}
@@ -97,7 +97,6 @@ function Left() {
                 name="Categories-1"
                 defaultValue="Beverages"
               />
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="Categories-1"> Organic</label>
             </div>
             <div className="mb-2">
@@ -108,7 +107,6 @@ function Left() {
                 name="Categories-1"
                 defaultValue="Beverages"
               />
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="Categories-2"> Fresh</label>
             </div>
             <div className="mb-2">
@@ -119,7 +117,6 @@ function Left() {
                 name="Categories-1"
                 defaultValue="Beverages"
               />
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="Categories-3"> Sales</label>
             </div>
             <div className="mb-2">
@@ -130,7 +127,6 @@ function Left() {
                 name="Categories-1"
                 defaultValue="Beverages"
               />
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="Categories-4"> Discount</label>
             </div>
             <div className="mb-2">
@@ -141,7 +137,6 @@ function Left() {
                 name="Categories-1"
                 defaultValue="Beverages"
               />
-              {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
               <label htmlFor="Categories-5"> Expired</label>
             </div>
           </div>
@@ -251,9 +246,9 @@ function Left() {
             <div
               className="position-absolute"
               style={{
-                top: '50%',
+                top: "50%",
                 right: 10,
-                transform: 'translateY(-50%)',
+                transform: "translateY(-50%)"
               }}
             >
               <h3 className="text-secondary fw-bold">

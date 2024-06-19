@@ -1,38 +1,42 @@
 import React from "react"
+import { setPage } from "../../../../../features/products/productSlice"
+import { useAppDispatch } from "../../../../../app/hooks"
 
 interface PaginationProps {
   total: number;
   page: number;
   limit: number;
-  onPageChange: (newPage: number) => void;
 }
 
-const Pagination: React.FC<PaginationProps> = ({ total, page, limit, onPageChange }) => {
+const Pagination: React.FC<PaginationProps> = ({ total, page, limit }) => {
   const totalPages = Math.max(1, Math.ceil(total / (limit || 1)))
-
+  const dispatch = useAppDispatch()
+  const handlePageChange = (newPage: number) => {
+    dispatch(setPage(newPage))
+  }
   const handlePrevPage = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault()
-    if (page > 1) onPageChange(page - 1)
+    if (page > 1) handlePageChange(page - 1)
   }
 
   const handleNextPage = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault()
-    if (page < totalPages) onPageChange(page + 1)
+    if (page < totalPages) handlePageChange(page + 1)
   }
 
   const handleFirstPage = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault()
-    onPageChange(1)
+    handlePageChange(1)
   }
 
   const handleLastPage = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
     e.preventDefault()
-    onPageChange(totalPages)
+    handlePageChange(totalPages)
   }
 
   const handlePageClick = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>, newPage: number) => {
     e.preventDefault()
-    if (newPage !== page) onPageChange(newPage)
+    if (newPage !== page) handlePageChange(newPage)
   }
 
   const renderPageNumbers = () => {
@@ -104,11 +108,12 @@ const Pagination: React.FC<PaginationProps> = ({ total, page, limit, onPageChang
   }
 
   return (
-    <div className="col-12">
-      <div className="pagination d-flex justify-content-center mt-5">
-        {renderPageNumbers()}
-      </div>
-    </div>
+    total > 6 ?
+      <div className="col-12">
+        <div className="pagination d-flex justify-content-center mt-5">
+          {renderPageNumbers()}
+        </div>
+      </div> : null
   )
 }
 
