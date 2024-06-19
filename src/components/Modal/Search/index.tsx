@@ -1,12 +1,15 @@
-import type React from "react"
-import { useCallback, useEffect } from "react"
+import React, { useCallback, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import Modal from "react-bootstrap/Modal"
 import { useAppDispatch, useAppSelector } from "../../../app/hooks"
 import { closeModal } from "../../../features/modal/modalSlice"
+import { setSearchQuery } from "../../../features/products/productSlice"
 
 const Search: React.FC = () => {
   const isOpenModal = useAppSelector((state) => state.modal.isOpen)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  const [keyword, setKeyword] = useState("")
 
   const handleCloseEsc = useCallback(
     (ev: KeyboardEvent) => {
@@ -22,8 +25,17 @@ const Search: React.FC = () => {
     return () => document.removeEventListener("keydown", handleCloseEsc)
   }, [handleCloseEsc])
 
-  const handleClose = () => {
+  const handleClose = useCallback(() => {
     dispatch(closeModal())
+  }, [dispatch])
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (keyword.trim()) {
+      navigate(`/products?q=${encodeURIComponent(keyword)}`)
+      dispatch(setSearchQuery(encodeURIComponent(keyword)))
+      handleClose()
+    }
   }
 
   return (
@@ -45,15 +57,19 @@ const Search: React.FC = () => {
       </Modal.Header>
       <Modal.Body className="d-flex align-items-center justify-content-center">
         <div className="input-group w-75 mx-auto">
-          <input
-            type="search"
-            className="form-control p-3"
-            placeholder="keywords"
-            aria-describedby="search-icon-1"
-          />
-          <span id="search-icon-1" className="input-group-text p-3">
-            <i className="fa fa-search" />
-          </span>
+          <form className="w-100" onSubmit={handleSearch}>
+            <input
+              type="search"
+              className="form-control p-3"
+              placeholder="keywords"
+              aria-describedby="search-icon-1"
+              value={keyword}
+              onChange={(e) => setKeyword(e.target.value)}
+            />
+            <button type="submit" className="input-group-text p-3" id="search-icon-1">
+              <i className="fa fa-search" />
+            </button>
+          </form>
         </div>
       </Modal.Body>
     </Modal>
