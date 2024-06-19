@@ -1,7 +1,15 @@
 import type React from "react"
+import { useDispatch } from "react-redux"
+import { addProductById } from "../../../../../features/cart/cartSlice"
+
 
 const ProductItem: React.FC<{ item: any }> = ({ item }) => {
   const defaultImage = "https://via.placeholder.com/150"
+  const dispatch = useDispatch()
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault()
+    //dispatch(addProductById({id: item.id, dispatch} ))
+  }
 
   return (
     <div className="col-md-6 col-lg-6 col-xl-4">
@@ -32,6 +40,7 @@ const ProductItem: React.FC<{ item: any }> = ({ item }) => {
             <a
               href={`/product/${item.id}`}
               className="btn border border-secondary rounded-pill px-3 text-primary"
+              onClick={handleAddToCart}
             >
               <i className="fa fa-shopping-bag me-2 text-primary" /> Add to cart
             </a>
