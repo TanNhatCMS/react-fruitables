@@ -1,18 +1,34 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Header from "../../Header"
 import Footer from "../../Footer"
 import SinglePageHeader from "./SinglePageHeader"
 import { useAppDispatch, useAppSelector } from "../../../app/hooks"
 import type { RootState } from "../../../app/store"
-import { decrementQuantity, incrementQuantity, removeItem } from "../../../features/cart/cartSlice"
+import { decrementQuantity, incrementQuantity, initItems, removeItem } from "../../../features/cart/cartSlice"
+import vegetableitem3 from "../../../assets/images/vegetable-item-3.png"
+import vegetableitem5 from "../../../assets/images/vegetable-item-5.jpg"
+import vegetableitem2 from "../../../assets/images/vegetable-item-2.jpg"
 
-
+const initialItems = [
+  { id: 1000, name: "Big Banana", price: 2.99, quantity: 1, img: vegetableitem3 },
+  { id: 2000, name: "Potatoes", price: 2.99, quantity: 1, img: vegetableitem5 },
+  { id: 3000, name: "Awesome Broccoli", price: 2.99, quantity: 1, img: vegetableitem2 }
+]
 const Cart = () => {
   const dispatch = useAppDispatch()
+  //list_items.map(item => dispatch(addItem(item)))
+  //dispatch(addItem(list_items[0]))
   const { items, shipping } = useAppSelector((state: RootState) => state.cart)
   const subtotal = items.reduce((total, item) => total + item.price * item.quantity, 0)
   const total = subtotal + shipping
-
+  const [initi, setIniti] = useState(false)
+  useEffect(() => {
+    if (!initi) {
+      console.log("initialItems")
+      //  dispatch(initItems(initialItems))
+      setIniti(true)
+    }
+  }, [initi])
   return (
     <>
       <Header />

@@ -1,14 +1,26 @@
-import type React from "react"
-import { useDispatch } from "react-redux"
-import { addProductById } from "../../../../../features/cart/cartSlice"
-
+import React from "react"
+import { useAppDispatch } from "../../../../../app/hooks"
+import { addItem } from "../../../../../features/cart/cartSlice"
+// import { addProductById } from "../../../../../features/cart/cartSlice"
 
 const ProductItem: React.FC<{ item: any }> = ({ item }) => {
   const defaultImage = "https://via.placeholder.com/150"
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
+
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault()
-    //dispatch(addProductById({id: item.id, dispatch} ))
+    try {
+      dispatch(addItem({
+        id: item.id,
+        name: item.title,
+        price: item.price,
+        quantity: 1,
+        img: item.thumbnail
+      }))
+    } catch (err) {
+      console.log(err)
+    }
+    // dispatch(addProductById(item.id))
   }
 
   return (
@@ -19,8 +31,9 @@ const ProductItem: React.FC<{ item: any }> = ({ item }) => {
             <img
               src={item.thumbnail || defaultImage} // Use default image if no image provided
               className="img-fluid w-100 rounded-top"
-              alt={item.name || "Product image"} // Set alt text based on name
-            /></a>
+              alt={item.title || "Product image"} // Set alt text based on name
+            />
+          </a>
         </div>
         <div
           className="text-white bg-secondary px-3 py-1 rounded position-absolute"
