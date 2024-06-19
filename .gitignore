@@ -5,6 +5,7 @@ dist
 dist-ssr
 /.pnp
 .pnp.js
+/fruitables-1.0.0
 # testing
 /coverage
 # production
