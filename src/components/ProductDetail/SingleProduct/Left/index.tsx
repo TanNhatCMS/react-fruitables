@@ -1,17 +1,15 @@
 import React, { useEffect } from "react"
 import { useParams } from "react-router-dom"
-import { useDispatch, useSelector } from "react-redux"
-
 import avatar from "../../../../assets/images/avatar.jpg"
 import Rating from "./Rating"
 import { fetchProductById } from "../../../../features/products/productSlice"
-import { AppDispatch, RootState } from "../../../../app/store"
+import { useAppDispatch, useAppSelector } from "../../../../app/hooks"
 
 const Left: React.FC = () => {
-  const dispatch: AppDispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const { id } = useParams<{ id: string }>()
-  const product = useSelector((state: RootState) => state.products.productById)
-  const status = useSelector((state: RootState) => state.products.status)
+  const product = useAppSelector((state) => state.products.productById)
+  const status = useAppSelector((state) => state.products.status)
 
   useEffect(() => {
     if (id) {
