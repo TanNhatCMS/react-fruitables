@@ -1,25 +1,25 @@
-import type React from 'react';
-import { useState, useEffect, useMemo } from 'react'
-import { useLocation } from 'react-router-dom'
-import { Navbar } from 'react-bootstrap'
-import { ContextModalSearch } from '../../context/ContextModalSearch'
-import Logo from '../Logo'
-import ToggleButton from '../ToggleButton'
-import NavigationLinks from '../NavigationLinks'
-import AdditionalActions from '../AdditionalActions'
+import type React from "react"
+import { useState, useEffect, useMemo } from "react"
+import { useLocation } from "react-router-dom"
+import { Navbar } from "react-bootstrap"
+import { ContextModalSearch } from "../../context/ContextModalSearch"
+import Logo from "./Logo"
+import ToggleButton from "./ToggleButton"
+import NavigationLinks from "./NavigationLinks"
+import AdditionalActions from "./AdditionalActions"
 
 const NaviBar: React.FC = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
   const valueAdd = useMemo(
     () => ({
       isOpenModal,
-      setIsOpenModal,
+      setIsOpenModal
     }),
-    [isOpenModal],
+    [isOpenModal]
   )
 
   const location = useLocation()
-  const [activeLink, setActiveLink] = useState('')
+  const [activeLink, setActiveLink] = useState("")
   useEffect(() => {
     // Lấy path từ URL hiện tại và loại bỏ ký tự '/' ở đầu
     const currentPath = location.pathname.slice(1)
@@ -32,7 +32,7 @@ const NaviBar: React.FC = () => {
         <ToggleButton />
         <Navbar.Collapse id="navbarCollapse">
           <NavigationLinks activeLink={activeLink} />
-          <AdditionalActions setIsOpenModal={setIsOpenModal} />
+          <AdditionalActions />
         </Navbar.Collapse>
       </Navbar>
     </ContextModalSearch.Provider>

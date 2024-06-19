@@ -1,5 +1,5 @@
-import type React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import type React from "react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
 const TopInfo: React.FC = () => {
@@ -8,16 +8,16 @@ const TopInfo: React.FC = () => {
       <small className="me-3">
         <i className="fas fa-map-marker-alt me-2 text-secondary" />
         <a
-          href="/#"
+          href="/public#"
           className="text-white"
         >
           123
           Street, New York
         </a>
-        {' '}
-        <FontAwesomeIcon icon={['fas', 'envelope']} className="me-2 text-secondary" />
+        {" "}
+        <FontAwesomeIcon icon={["fas", "envelope"]} className="me-2 text-secondary" />
         <a
-          href="/#"
+          href="/public#"
           className="text-white"
         >
           Email@Example.com

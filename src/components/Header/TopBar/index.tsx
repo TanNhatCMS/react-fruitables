@@ -1,29 +1,29 @@
-import type React from 'react';
-import { useEffect } from 'react'
-import { Container } from 'react-bootstrap'
-import TopInfo from '../TopInfo'
-import TopLink from '../TopLink'
+import type React from "react"
+import { useEffect } from "react"
+import { Container } from "react-bootstrap"
+import TopInfo from "./TopInfo"
+import TopLink from "./TopLink"
 
 const TopBar: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.innerWidth < 992) {
         if (window.scrollY > 55) {
-          document.querySelector('.fixed-top')?.classList.add('shadow')
+          document.querySelector(".fixed-top")?.classList.add("shadow")
         } else {
-          document.querySelector('.fixed-top')?.classList.remove('shadow')
+          document.querySelector(".fixed-top")?.classList.remove("shadow")
         }
       } else if (window.scrollY > 55) {
-        document.querySelector('.fixed-top')?.classList.add('shadow')
-        document.querySelector('.fixed-top')?.setAttribute('style', 'top: -55px')
+        document.querySelector(".fixed-top")?.classList.add("shadow")
+        document.querySelector(".fixed-top")?.setAttribute("style", "top: -55px")
       } else {
-        document.querySelector('.fixed-top')?.classList.remove('shadow')
-        document.querySelector('.fixed-top')?.setAttribute('style', 'top: 0')
+        document.querySelector(".fixed-top")?.classList.remove("shadow")
+        document.querySelector(".fixed-top")?.setAttribute("style", "top: 0")
       }
     }
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener("scroll", handleScroll)
     return () => {
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener("scroll", handleScroll)
     }
   }, [])
   return (
