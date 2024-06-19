@@ -8,7 +8,8 @@ const store = configureStore({
     login: loginReducer,
     products: productReducer,
     user: userReducer
-  }
+  },
+  devTools: true
 })
 
 export type AppDispatch = typeof store.dispatch;
