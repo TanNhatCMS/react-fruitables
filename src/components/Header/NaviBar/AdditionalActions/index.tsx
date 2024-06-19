@@ -1,13 +1,16 @@
-import type React from "react"
+import React, { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../../../../app/hooks"
 import { openModal } from "../../../../features/modal/modalSlice"
 import type { RootState } from "../../../../app/store"
 import { useNavigate } from "react-router-dom"
+import { fetchCurrentUser } from "../../../../features/login/loginSlice"
 
 const AdditionalActions: React.FC = () => {
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
   const { totalQuantity } = useAppSelector((state: RootState) => state.cart)
+  const token = useAppSelector((state) => state.login.token)
+  const user = useAppSelector((state) => state.login.user)
 
   const handleOpenModal = () => {
     dispatch(openModal())
@@ -16,6 +19,21 @@ const AdditionalActions: React.FC = () => {
     e.preventDefault()
     navigate("/cart")
   }
+  const handleGoUser = (e: React.MouseEvent) => {
+    e.preventDefault()
+    if (token) {
+      navigate("/profile")
+    } else {
+      navigate("/login")
+    }
+  }
+
+
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchCurrentUser(token))
+    }
+  }, [token, dispatch])
   return (
     <div className="d-flex m-3   ml-auto">
       {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
@@ -32,10 +50,16 @@ const AdditionalActions: React.FC = () => {
         )}
       </a>
       {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
-      <a href="/#" className="my-auto">
-        <i className="fas fa-user fa-2x" />
+      <a onClick={handleGoUser} href="/#" className="my-auto">
+        <i className="fas fa-user fa-2x" />{user ? user.username : "Login"}
       </a>
     </div>
   )
 }
+// <p>Username: {user.username}</p>
+//           <p>Email: {user.email}</p>
+//           <p>First Name: {user.firstName}</p>
+//           <p>Last Name: {user.lastName}</p>
+//           <p>Gender: {user.gender}</p>
+//           <img src={user.image} alt="User profile" className="img-fluid rounded-circle" />
 export default AdditionalActions
