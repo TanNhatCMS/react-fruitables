@@ -26,8 +26,8 @@
     "sass": "^1.77.6"
   },
   "scripts": {
-    "dev": "vite",
-    "start": "vite",
+    "dev": "vite --port 4000",
+    "start": "vite --port 4000",
     "build": "tsc && vite build",
     "preview": "vite preview",
     "test": "vitest run",
