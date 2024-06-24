@@ -20,6 +20,8 @@ import LoginForm from "./components/LoginForm"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Profile from "./components/Profile"
+import Cau2 from "./components/Cau2"
+
 
 const App = () => (
   <Provider store={store}>
@@ -30,6 +32,7 @@ const App = () => (
           element={(
             <>
               <Head title="Home | Fruitables - Vegetable Website Template " />
+
               <Home />
             </>
           )}
@@ -49,6 +52,15 @@ const App = () => (
             <>
               <Head title="Product Detail| Fruitables - Vegetable Website Template" />
               <ProductDetail />
+            </>
+          )}
+        />
+        <Route
+          path="/category/:slug"
+          element={(
+            <>
+              <Head title="Product Detail| Fruitables - Vegetable Website Template" />
+              <Cau2 />
             </>
           )}
         />
@@ -116,24 +128,6 @@ const App = () => (
           )}
         />
         <Route
-          path="/:title-:id.html"
-          element={(
-            <>
-              <Head title="Shop Detail| Fruitables - Vegetable Website Template" />
-              <ShopDetail />
-            </>
-          )}
-        />
-        <Route
-          path=":id"
-          element={(
-            <>
-              <Head title="Shop | Fruitables - Vegetable Website Template" />
-              <Shop />
-            </>
-          )}
-        />
-        <Route
           path="/login"
           element={
             <>
@@ -155,7 +149,8 @@ const App = () => (
             </>
           }
         />
-        <Route path="*" element={<Navigate to="/404.html" />} />
+        <Route path="/index.html" element={<Navigate to="/" />} />
+        <Route path="*" element={<Navigate to="/404" />} />
       </Routes>
     </BrowserRouter>
   </Provider>

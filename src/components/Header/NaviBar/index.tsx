@@ -5,8 +5,9 @@ import { Navbar } from "react-bootstrap"
 import { ContextModalSearch } from "../../context/ContextModalSearch"
 import Logo from "./Logo"
 import ToggleButton from "./ToggleButton"
-import NavigationLinks from "./NavigationLinks"
+// import NavigationLinks from "./NavigationLinks"
 import AdditionalActions from "./AdditionalActions"
+import Cau1 from "../../Cau1"
 
 const NaviBar: React.FC = () => {
   const [isOpenModal, setIsOpenModal] = useState(false)
@@ -31,7 +32,8 @@ const NaviBar: React.FC = () => {
         <Logo />
         <ToggleButton />
         <Navbar.Collapse id="navbarCollapse">
-          <NavigationLinks activeLink={activeLink} />
+          <Cau1 />
+          {/*<NavigationLinks activeLink={activeLink} />*/}
           <AdditionalActions />
         </Navbar.Collapse>
       </Navbar>
